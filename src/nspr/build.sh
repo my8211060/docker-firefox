@@ -25,6 +25,10 @@ export CXX=xx-clang++
 export HOST_CC=clang
 export HOST_CXX=clang++
 
+export AR=ar
+export RANLIB=ranlib
+export STRIP=strip
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 log() {
@@ -46,6 +50,9 @@ apk --no-cache add \
     patch \
     clang \
     make \
+    gcc \
+    musl-dev \
+    binutils \
 
 xx-apk --no-cache --no-scripts add \
     musl-dev \

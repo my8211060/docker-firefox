@@ -4,10 +4,16 @@
 # https://github.com/jlesage/docker-firefox
 #
 
+# Docker image version is provided via build arg.
+ARG DOCKER_IMAGE_VERSION=
+
 # Define software versions.
+ARG FIREFOX_VERSION=151.0.3-r0
+#ARG PROFILE_CLEANER_VERSION=2.36
 ARG NSPR_VERSION=4.38.2
 
 # Define software download URLs.
+#ARG PROFILE_CLEANER_URL=https://github.com/graysky2/profile-cleaner/raw/v${PROFILE_CLEANER_VERSION}/common/profile-cleaner.in
 ARG NSPR_URL=https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${NSPR_VERSION}/src/nspr-${NSPR_VERSION}.tar.gz
 
 # Get Dockerfile cross-compilation helpers.
@@ -36,15 +42,8 @@ RUN xx-verify \
 # Pull base image.
 FROM jlesage/baseimage-gui:alpine-3.24-v4.13.2
 
-# Docker image version is provided via build arg.
-ARG DOCKER_IMAGE_VERSION=
-
-# Define software versions.
-ARG FIREFOX_VERSION=151.0.3-r0
-#ARG PROFILE_CLEANER_VERSION=2.36
-
-# Define software download URLs.
-#ARG PROFILE_CLEANER_URL=https://github.com/graysky2/profile-cleaner/raw/v${PROFILE_CLEANER_VERSION}/common/profile-cleaner.in
+ARG FIREFOX_VERSION
+ARG DOCKER_IMAGE_VERSION
 
 # Define working directory.
 WORKDIR /tmp
